@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Echoes of Eldoria</title>
+<style>
+    /* Basic resets */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #111;
+        overflow: hidden;
+    }
+
+    #background {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: background-image 0.8s ease-in-out;
+        z-index: -1;
+        /* filter: blur(5px); */
+        transform: scale(1.05);
+    }
+
+    #story-container {
+        width: 90%;
+        max-width: 750px;
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        background: rgba(0,0,0,0.25); /* semi-transparent container */
+        backdrop-filter: blur(10px); /* blur effect behind container */
+    }
+
+    /* Inner text wrapper with blur */
+    #text-wrapper {
+        background: rgba(0,0,0,0.35); /* semi-transparent */
+        backdrop-filter: blur(8px);   /* blur effect */
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+
+    #scene-text {
+        font-size: 1.3rem;
+    }
+
+    #choices {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .choice-btn {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #6b6bff, #00ffd5);
+        color: #111;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .choice-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px #00ffd5;
+    }
+
+    #health-bar {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        height: 30px;
+        background-color: #333;
+        border: 2px solid #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        z-index: 10;
+    }
+
+    #health-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #ff0000, #00ff00);
+        transition: width 0.5s ease;
+    }
+
+    #health-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-weight: bold;
+        font-size: 1rem;
+        z-index: 11;
+    }
+
+    @media(max-width: 500px) {
+        #story-container {
+            padding: 20px;
+        }
+        #scene-text {
+            font-size: 1.1rem;
+        }
+        #health-bar {
+            width: 250px;
+            height: 25px;
+        }
+        #health-text {
+            font-size: 0.9rem;
+        }
+    }
+</style>
+</head>
+<body>
+<div id="background"></div>
+<div id="health-bar">
+    <div id="health-fill"></div>
+    <span id="health-text">Health: 100</span>
+</div>
+<div id="story-container">
+    <div id="text-wrapper">
+        <h2 id="scene-text">Loading story...</h2>
+    </div>
+    <div id="choices"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
